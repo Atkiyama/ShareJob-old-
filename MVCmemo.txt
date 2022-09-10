@@ -8,3 +8,6 @@ MUser
 UserService.java
 UserServiceImpl.java
 13章を参考に実装。getLoginUserとgetUserOneを実装
+ProfileController
+本の8.2.3のUserDetailControllerのgetUser()を参考に実装
+Getmappingは"/{userId:.+}"でOK
