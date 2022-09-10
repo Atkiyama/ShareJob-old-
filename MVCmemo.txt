@@ -1,0 +1,12 @@
+LoginController
+ファイル作ったはいいけど今回は使わないので放置
+UserRepository
+本の13章を参考にログインユーザ検索の機能だけ実装してくれればOK
+SQLの表としては(userId password)だけで構成されている表をイメージしれくれればOK
+MUser
+ユーザ情報を定義するクラス。本来は後々追加すると思うけどとりあえずuserId(こっちが主キー)とpasswordがあればOK
+UserService.java
+UserServiceImpl.java
+13章を参考に実装。getLoginUserとgetUserOneを実装
+
+新規
