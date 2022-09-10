@@ -8,5 +8,3 @@ MUser
 UserService.java
 UserServiceImpl.java
 13章を参考に実装。getLoginUserとgetUserOneを実装
-
-新規
