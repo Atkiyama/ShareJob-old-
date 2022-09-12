@@ -1,3 +1,4 @@
+
 package com.example.aspect;
 
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -20,3 +21,4 @@ public class ErrorAspect {
         log.error("DataAccessExceptionが発生しました");
     }
 }
+

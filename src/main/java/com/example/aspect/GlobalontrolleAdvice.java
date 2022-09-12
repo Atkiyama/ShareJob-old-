@@ -1,4 +1,5 @@
-ackage com.example.aspect;
+
+package com.example.aspect;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
