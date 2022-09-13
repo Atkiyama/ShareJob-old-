@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.model.MUser;
 import com.example.service.UserService;
 
 @RestController
@@ -33,7 +34,7 @@ public class ProfileControlller {
 	 * @return json形式でユーザIDとパスワードが帰ってくる
 	 */
 	@GetMapping("/profile/{userId:.+}")
-	public String getUser(Model model, @PathVariable("userId") String userId) {
+	public MUser getUser(Model model, @PathVariable("userId") String userId) {
 		//Muserをサービスから取得して返す
 		return userService.getUserOne(userId);
 	}
