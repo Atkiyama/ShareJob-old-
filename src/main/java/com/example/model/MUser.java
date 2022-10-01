@@ -1,12 +1,10 @@
 package com.example.model;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import java.util.Date;
+
+import lombok.Data;
 
 /**
  * ユーザ情報を定義するクラス
@@ -29,9 +27,7 @@ public class MUser {
 //    private Integer age;
 //    private Integer gender;
 //    private Integer departmentId;
-//    private String role;
+//    private Grade grade;
 //    @Transient
-//    private Department department;
-//    @Transient
-//    private List<Salary> salaryList;
+//	private List<Company> salaryList;
 }
