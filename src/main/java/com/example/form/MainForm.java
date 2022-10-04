@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class MainForm {
-	String name;
+	String userName;
 	
 	/**
 	 * キーに会社名、valueにメモの内容をセット

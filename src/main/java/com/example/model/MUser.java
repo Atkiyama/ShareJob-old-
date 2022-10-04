@@ -22,6 +22,7 @@ public class MUser {
     @Id
     private String userId;
     private String password;
+    private String userName;
 //    private String userName;
 //    private Date birthday;
 //    private Integer age;
