@@ -1,7 +1,13 @@
 package com.example.model;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -30,5 +36,18 @@ public class MUser {
 //    private Integer departmentId;
 //    private Grade grade;
 //    @Transient
-//	private List<Company> salaryList;
+    //他対一
+    @ManyToOne(optional = true)
+    //外部キーを設定
+    @JoinColumn(insertable=false,updatable=false,name="company_Id")
+	private List<Company> companyList;
+    
+    @OneToOne(optional = true)
+    /*
+    //外部キー(複数)を設定
+    @JoinColumns({
+    	@JoinColumn(insertable=false,updatable=false,name="user_Id"),
+    	@JoinColumn(insertable=false,updatable=false,name="company_Id")
+    })*/
+    private Map<String,String> companyMemo;
 }

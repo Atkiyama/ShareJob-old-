@@ -30,10 +30,11 @@ public class ProfileControlller {
 	/**
 	 * プロフィールの情報を返す。プロフィール情報は人によって違うのでリクエストするパラメータも人によって変わってくるので正規表現{userId:.+}
 	 * を用いる
+	 * nonLogindemoでは使用していない
 	 * @param userId ユーザID リクエストに対応するものを自動で撮ってきてくれる
 	 * @return json形式でユーザIDとパスワードが帰ってくる
 	 */
-	@GetMapping("/profile/{userId:.+}")
+	@GetMapping("/profile/hoge")
 	public MUser getUser(Model model, @PathVariable("userId") String userId) {
 		//Muserをサービスから取得して返す
 		return userService.getUserOne(userId);

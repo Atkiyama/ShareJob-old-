@@ -1,5 +1,18 @@
 package com.example.model;
 
-public class CompanyMemo {
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+import org.springframework.data.annotation.Id;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="company_memo")
+public class CompanyMemo {
+	@Id
+	CompanyMemoKey companyMemoKey;
+	String companyMemo;
+	
 }

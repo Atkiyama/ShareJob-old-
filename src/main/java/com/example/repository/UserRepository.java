@@ -1,10 +1,11 @@
 package com.example.repository;
 
-import com.example.model.MUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import com.example.model.MUser;
 
 /**
  * jpaを使って実装

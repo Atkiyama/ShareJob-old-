@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.form.LoginForm;
 import com.example.model.MUser;
+import com.example.model.view.MainViewMUser;
 import com.example.service.UserService;
 
 /**
@@ -34,10 +35,12 @@ public class LoginController {
 	 * @return json形式でユーザIDとパスワードが帰ってくる
 	 */
 	@PostMapping("/profile/{userId:.+}")
-	public MUser postLogin(Model model, Locale locale, @ModelAttribute LoginForm form,BindingResult bindingResult) {
-		//Muserをサービスから取得して返す
+	public MainViewMUser postLogin(Model model, Locale locale, @ModelAttribute LoginForm form,BindingResult bindingResult) {
+		//IDに合致するMuserをサービスから取得
 		MUser user = userService.getUserOne(form.getUserId());
-		return user;
+		//jsonで返すためにMainViewMUserに変換
+		MainViewMUser mvuser = new MainViewMUser(user);
+		return mvuser;
 	}
 
 
