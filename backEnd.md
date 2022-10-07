@@ -1,6 +1,6 @@
-#バックエンド側の構造について
+# バックエンド側の構造について
 
-##処理のフロー
+## 処理のフロー
 1. schema.sqlが起動してテーブルを作成、その後data.sqlで初期データが代入される
 2. vue側からidとパスワードがPOSTされる。これをcontroller.LoginControllerで受け取る。(受け取るデータはform.LoginFormで定義される)
 3. LoginControllerがservice.impl.UserServiceImplを呼び出す。
@@ -10,7 +10,7 @@
 7. ユーザ情報をjsonで返す形に整形(Muserをmodel.view.MainViewUserに整形)
 8. 整形した情報をVue側にreturnする
 
-##パッケージの詳細
+## パッケージの詳細
 * src/main/java
     * aspect 
         * デバックログなどに関連する処理が記述される
@@ -45,7 +45,7 @@
         * O/RマッパーのMybaitsを使う時にはここにSQLを入れる
         * 現在の挙動には影響しない
     
-##各クラスの詳細
+## 各クラスの詳細
 
 * src/main/java
     * aspect 
@@ -102,7 +102,7 @@
 
     * ShareJobApplication
         * アプリケーションを起動する　
-##その他ファイルの詳細
+## その他ファイルの詳細
 
 現在の処理に関わる部分のみ記述
 * src/main/resourses
