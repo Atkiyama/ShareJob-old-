@@ -18,12 +18,12 @@ import com.example.model.MUser;
  */
 public interface UserRepository extends JpaRepository<MUser, String> {
     // ログインユーザ検索
-    @Query("select user" + " from MUser user" + " where userId=:userId")
+    @Query("select user" + " from MUser user" + " where userId = :userId")
     public MUser findLoginUser(@Param("userId")String userId);
 
     // ユーザー更新
     @Modifying
-    @Query("update MUser" + "set" + " password=:password" + " ,userName =:userName" + " where" + " userId=:userId")
+    @Query("update MUser" + " set" + " password = :password" + ", userName = :userName" + " where" + " userId = :userId")
     public Integer updateUser(@Param("userId")String userId,
                               @Param("password")String password,
                               @Param("userName")String userName);

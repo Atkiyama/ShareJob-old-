@@ -1,9 +1,8 @@
 package com.example.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.data.annotation.Id;
 
 import lombok.Data;
 
@@ -12,9 +11,9 @@ import lombok.Data;
 @Table(name="company")
 public class Company {
 	@Id
-	private String CompanyId;
-	private String CompanyName;
-	private String CompanyAbstract;
+	private String companyId;
+	private String companyName;
+	private String companyAbstract;
 	//@Transient
 	//private List<Event> events;
 	

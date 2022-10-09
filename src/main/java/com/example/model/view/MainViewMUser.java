@@ -1,7 +1,5 @@
 package com.example.model.view;
 
-import java.util.Map;
-
 import com.example.model.MUser;
 
 import lombok.Data;
@@ -12,11 +10,11 @@ public class MainViewMUser {
 	/**
 	 * キーに社名、valueにメモ
 	 */
-	private Map<String, String> companyMemo;
+//	private Map<String, String> companyMemo;
 	public MainViewMUser(MUser user) {
 		// TODO 自動生成されたコンストラクター・スタブ
 		userName = user.getUserName();
-		companyMemo = user.getCompanyMemo();
+//		companyMemo = user.getCompanyMemo();
 	}
 
 }
