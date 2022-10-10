@@ -32,6 +32,7 @@
 
 <script>
 import * as axios from 'axios'
+//import axios, * as others from 'axios';
 
 export default{
     name: 'LoginForm',
@@ -44,6 +45,7 @@ export default{
     },
     methods:{
         login(){
+            /*
             //ToDo:P_URLをbackのログイン管理APIにget request送るためのurlに書き換える
             let P_URL="https://script.google.com/macros/s/AKfycbwzOKNeN4csEdR0A--YJzNZ0v60m89ZiDzpbDdz-CFQFDjSdvCRBKg5o0zr4Mz1oDXuhw/exec";
             P_URL=P_URL+"?userId="+this.userId+"&password="+this.password;
@@ -55,6 +57,19 @@ export default{
                 alert("ログインエラーが発生しました");
                 console.log(e);
             });
+            */
+            
+            const vue = this;//important
+            axios.post('/index/login',{
+                userId: this.userId,
+                password: this.password
+            }).then(function (response) {
+                console.log(response);
+                response.data.text().then(str=>{vue.init(str);});
+            }).catch(function (error) {
+                alert("ログインエラーが発生しました");
+                console.log(error);
+            });
         },
         init(str){
             let res=JSON.parse(str).judge;
@@ -62,6 +77,7 @@ export default{
             if(res=="true"){//認証成功
                 this.$store.dispatch("userLogin/saveUserId",this.userId);
                 this.$store.dispatch("userLogin/changeIsLogged");
+                //ここで画面遷移
                 this.$router.push({name:'HomeView'});
             }else{//認証失敗
                 this.loginFailed=true;

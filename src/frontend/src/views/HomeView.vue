@@ -25,6 +25,7 @@ export default {
         if (!isLogged) {
             this.$router.push({ name: "LoginForm" })
         }
+        /*
         const getUserId = this.$store.getters["userLogin/getUserId"];
         //ToDo:G_URLをbackの仕事情報管理APIにget request送るためのurlに書き換える
         let G_URL="https://script.google.com/macros/s/AKfycbzCcVLeQuaxhdV1c_9IpxY7lYaR0v35uTReyicBzDvhHMTElM04G4JtzOs45zQ_LGyY/exec";
@@ -32,6 +33,16 @@ export default {
         const vue = this;//important
         const option={responseType: "blob"};
         axios.get(G_URL,option).then(response => {
+            response.data.text().then(str => { vue.init(str);});
+        }).catch(e => {
+            alert("エラーが発生しました");
+            console.log(e);
+        });
+        */
+        const vue = this;//important
+        axios.post('/index/home',{
+            userId: this.userId
+        }).then(response => {
             response.data.text().then(str => { vue.init(str);});
         }).catch(e => {
             alert("エラーが発生しました");

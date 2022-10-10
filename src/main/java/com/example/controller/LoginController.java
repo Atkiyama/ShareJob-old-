@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.form.LoginForm;
 import com.example.model.MUser;
-import com.example.model.view.MainViewMUser;
 import com.example.service.UserService;
 
 /**
@@ -38,13 +37,15 @@ public class LoginController {
 	 * @param userId ユーザID リクエストに対応するものを自動で撮ってきてくれる
 	 * @return json形式でユーザIDとパスワードが帰ってくる
 	 */
-	@PostMapping("/main")
-	public MainViewMUser postLogin(Model model, Locale locale, @ModelAttribute LoginForm form,BindingResult bindingResult) {
+	@PostMapping("/login")
+	public boolean postLogin(Model model, Locale locale, @ModelAttribute LoginForm form,BindingResult bindingResult) {
 		//IDに合致するMuserをサービスから取得
 		MUser user = userService.getUserOne(form.getUserId());
-		//jsonで返すためにMainViewMUserに変換
-		MainViewMUser mvuser = new MainViewMUser(user);
-		return mvuser;
+		 if(user!=null)
+	            return true;
+	        else
+	            return false;
+	        
 	}
 
 
