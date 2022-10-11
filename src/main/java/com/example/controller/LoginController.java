@@ -21,7 +21,7 @@ import com.example.service.UserService;
  *
  */
 @RestController
-@RequestMapping("/index/")
+@RequestMapping("index")
 public class LoginController {
 	
 

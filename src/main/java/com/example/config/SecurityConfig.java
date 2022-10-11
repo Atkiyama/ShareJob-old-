@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/css/**")
                 .antMatchers("/js/**")
                 .antMatchers("/h2-console/**");
-    }*/
+    }
     
     /** 認証の設定 */
    // @Override

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+//import axios from 'axios'
 
 export default{
     name: 'LoginForm',
@@ -58,7 +58,7 @@ export default{
             });
             */
             
-            
+            /*
             const vue = this;//important
             axios.post('/index/login',{
                 userId: this.userId,
@@ -70,6 +70,34 @@ export default{
                 alert("ログインエラーが発生しました");
                 console.log(error);
             });
+            */
+           const data = {
+                userId: this.userId,
+                password: this.password
+           };
+           
+            fetch('/index/login',{
+                method:'POST',
+                headers: {
+                    'content-Type':'application/json' 
+                },
+                body: JSON.stringify(data)
+            })
+            .then(responce => responce.json())
+            .then(
+                alert("処理がここに流れる"),
+            
+                str=>{vue.init(str);}
+            )
+            .catch(function (error) {
+                alert("ログインエラーが発生しました");
+                console.log(error);
+            });
+
+
+        }
+
+            
         },
         init(str){
             let res=JSON.parse(str).judge;
@@ -85,7 +113,9 @@ export default{
         },
         signup(){
             this.$router.push({name:'SignUp'});
+     
         }
-    }
+           
+    
 }
 </script>

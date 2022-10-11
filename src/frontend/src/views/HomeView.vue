@@ -43,6 +43,7 @@ export default {
         axios.post('/index/home',{
             userId: this.userId
         }).then(response => {
+            alert("おいこら");
             response.data.text().then(str => { vue.init(str);});
         }).catch(e => {
             alert("エラーが発生しました");
