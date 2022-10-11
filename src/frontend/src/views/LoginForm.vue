@@ -31,8 +31,7 @@
 </template>
 
 <script>
-import * as axios from 'axios'
-//import axios, * as others from 'axios';
+import axios from 'axios'
 
 export default{
     name: 'LoginForm',
@@ -59,12 +58,13 @@ export default{
             });
             */
             
+            
             const vue = this;//important
             axios.post('/index/login',{
                 userId: this.userId,
                 password: this.password
             }).then(function (response) {
-                console.log(response);
+                alert("thenに遷移");
                 response.data.text().then(str=>{vue.init(str);});
             }).catch(function (error) {
                 alert("ログインエラーが発生しました");

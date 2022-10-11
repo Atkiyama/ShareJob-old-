@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import * as axios from 'axios';
+import axios from 'axios'
 import JobList from '../components/JobList.vue';
 
 export default {
