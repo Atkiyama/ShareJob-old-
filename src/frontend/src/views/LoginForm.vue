@@ -71,10 +71,11 @@ export default{
                 console.log(error);
             });
             */
-           const data = {
+            const vue = this;//important
+            const data = {
                 userId: this.userId,
                 password: this.password
-           };
+            };
            
             fetch('/index/login',{
                 method:'POST',
@@ -84,11 +85,10 @@ export default{
                 body: JSON.stringify(data)
             })
             .then(responce => responce.json())
-            .then(
-                alert("処理がここに流れる"),
-            
-                str=>{vue.init(str);}
-            )
+            .then(function(data){
+                console.log(data);
+                data=>{vue.init(data);}
+            })
             .catch(function (error) {
                 alert("ログインエラーが発生しました");
                 console.log(error);
