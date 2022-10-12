@@ -1,14 +1,9 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.model.MUser;
-import com.example.model.view.MainViewMUser;
 import com.example.service.UserService;
 
 @RestController
@@ -35,6 +30,7 @@ public class MainControlller {
 	 * @param userId ユーザID リクエストに対応するものを自動で撮ってきてくれる
 	 * @return json形式でユーザIDとパスワードが帰ってくる
 	 */
+	/*
 	@GetMapping("/home")
 	public MainViewMUser getUser(Model model, @PathVariable("userId") String userId) {
 		//Muserをサービスから取得して返す
@@ -43,6 +39,7 @@ public class MainControlller {
 	    MainViewMUser mvUser = new MainViewMUser(mUser);
 		return mvUser;
 	}
+	*/
 	
 	
 

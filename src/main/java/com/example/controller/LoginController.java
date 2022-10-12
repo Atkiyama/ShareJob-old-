@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.form.LoginForm;
 import com.example.model.MUser;
+import com.example.model.view.MainViewMUser;
 import com.example.service.UserService;
 
 /**
@@ -28,6 +29,7 @@ public class LoginController {
 	/**
 	 * ユーザの情報を取得するサービスのクラス
 	 */
+    
 	@Autowired
 	private UserService userService;
 
@@ -38,13 +40,11 @@ public class LoginController {
 	 * @return json形式でユーザIDとパスワードが帰ってくる
 	 */
 	@PostMapping("/login")
-	public boolean postLogin(Model model, Locale locale, @ModelAttribute LoginForm form,BindingResult bindingResult) {
+	public MainViewMUser postLogin(Model model, Locale locale, @ModelAttribute LoginForm form,BindingResult bindingResult) {
 		//IDに合致するMuserをサービスから取得
 		MUser user = userService.getUserOne(form.getUserId());
-		 if(user!=null)
-	            return true;
-	        else
-	            return false;
+		MainViewMUser mvUser = new MainViewMUser(user);
+		return mvUser;
 	        
 	}
 
