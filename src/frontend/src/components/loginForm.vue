@@ -1,1 +1,0 @@
-{{- 変数は userId と password でお願いします-}}

@@ -1,17 +1,17 @@
 package com.example.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
 import com.example.model.MUser;
 import com.example.repository.UserRepository;
 import com.example.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.dao.DataAccessException;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * 13章を参照
@@ -26,7 +26,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository repository;
-
+    /*
     @Autowired
     private PasswordEncoder encoder;
 
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
         // insert
         repository.save(user);
-    }
+    }*/
 
     // ユーザ取得
     @Override

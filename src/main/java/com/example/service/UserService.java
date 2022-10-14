@@ -1,8 +1,8 @@
 package com.example.service;
 
-import com.example.model.MUser;
-
 import java.util.List;
+
+import com.example.model.MUser;
 
 /**
  * 本の8.2.1を参照
@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface UserService {
     // ユーザー登録
-    public void signup(MUser user);
+   // public void signup(MUser user);
 
     // ユーザ取得
     public List<MUser> getUsers(MUser user);
