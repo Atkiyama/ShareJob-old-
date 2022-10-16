@@ -3,12 +3,10 @@ INSERT INTO m_user (
     user_id 
   , password
   , user_name 
-  , company_id 
-  , company_memo
 
 ) VALUES
-('id1', 'id1','ID1','company1','内定承諾')
-,('id2', 'id2','ID2','company2','もしもしポリスメン?')
+('id1', 'id1','ID1')
+,('id2', 'id2','ID2')
 ;
 
 /* 会社マスタ */
@@ -24,7 +22,7 @@ INSERT INTO company (
 ;
 
 /* メモマスタ */
-INSERT INTO company_memo (
+INSERT INTO user_company (
     user_id
    , company_id 
    , company_memo 
@@ -33,4 +31,6 @@ INSERT INTO company_memo (
 ) VALUES
 ('id1', 'company1','内定承諾')
 ,('id2', 'company2','もしもしポリスメン?')
+,('id1', 'company2','蒼井翔太')
+,('id2', 'company1','巨大マックス')
 ;
