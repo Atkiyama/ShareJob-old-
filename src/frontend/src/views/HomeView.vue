@@ -1,21 +1,20 @@
 <template>
-  <div class="home">
-    <div class="p-3">
-      <h2>{{userId}} 様</h2>
+    <div class="home">
+        <div class="p-3">
+            <h2>{{userName}} 様</h2>
+        </div>
+        <JobList :array="result"/>
     </div>
-    <JobList :array="result"/>
-  </div>
 </template>
 
 <script>
-import axios from 'axios'
 import JobList from '../components/JobList.vue';
 
 export default {
     name: "HomeView",
     data() {
         return {
-            userId:"",
+            userName:"",
             items: null,
             result: null
         };
@@ -39,22 +38,13 @@ export default {
             console.log(e);
         });
         */
-        const vue = this;//important
-        axios.post('/index/home',{
-            userId: this.userId
-        }).then(response => {
-            alert("おいこら");
-            response.data.text().then(str => { vue.init(str);});
-        }).catch(e => {
-            alert("エラーが発生しました");
-            console.log(e);
-        });
+        const vue = this;
+        vue.init();
     },
     methods: {
-        init(str) {
-            //console.log(JSON.parse(str));
-            this.userId = JSON.parse(str).userId;
-            this.items = JSON.parse(str).items;
+        init() {
+            this.userName=this.$store.getters["jobList/getUserName"];
+            this.items=this.$store.getters["jobList/getJList"];
             this.reset();
         },
         reset() {

@@ -31,7 +31,8 @@
 </template>
 
 <script>
-//import axios from 'axios'
+import axios from 'axios'
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 export default{
     name: 'LoginForm',
@@ -57,8 +58,7 @@ export default{
                 console.log(e);
             });
             */
-            
-            /*
+
             const vue = this;//important
             axios.post('/index/login',{
                 userId: this.userId,
@@ -70,52 +70,22 @@ export default{
                 alert("ログインエラーが発生しました");
                 console.log(error);
             });
-            */
-            const vue = this;//important
-            const data = {
-                userId: this.userId,
-                password: this.password
-            };
-           
-            fetch('/index/login',{
-                method:'POST',
-                headers: {
-                    'content-Type':'application/json' 
-                },
-                body: JSON.stringify(data)
-            })
-            .then(responce => responce.json())
-            .then(function(data){
-                console.log(data);
-                data=>{vue.init(data);}
-            })
-            .catch(function (error) {
-                alert("ログインエラーが発生しました");
-                console.log(error);
-            });
-
-
-        }
-
-            
         },
         init(str){
-            let res=JSON.parse(str).judge;
-            //console.log(JSON.parse(str).judge);
-            if(res=="true"){//認証成功
-                this.$store.dispatch("userLogin/saveUserId",this.userId);
-                this.$store.dispatch("userLogin/changeIsLogged");
-                //ここで画面遷移
-                this.$router.push({name:'HomeView'});
-            }else{//認証失敗
+            let res=JSON.parse(str).items;
+            //console.log(JSON.parse(str).items);
+            this.$store.dispatch("userLogin/saveUserId",this.userId);
+            this.$store.dispatch("userLogin/changeIsLogged");
+            this.$store.dispatch("jobList/saveJList",res)
+            //ここで画面遷移
+            this.$router.push({name:'HomeView'});
+            if(this.$store.dispatch("jobList/checkJListNull")){//認証失敗
                 this.loginFailed=true;
             }
         },
         signup(){
             this.$router.push({name:'SignUp'});
-     
         }
-           
-    
+    }
 }
 </script>

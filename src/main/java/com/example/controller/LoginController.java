@@ -1,10 +1,12 @@
 package com.example.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.form.LoginForm;
 import com.example.model.MUser;
+import com.example.model.UserCompany;
 import com.example.model.view.MainViewMUser;
+import com.example.service.UserCompanyService;
 import com.example.service.UserService;
 
 /**
@@ -21,8 +25,9 @@ import com.example.service.UserService;
  * @author akiyamashuuhei
  *
  */
+@CrossOrigin
 @RestController
-@RequestMapping("index")
+@RequestMapping("/index")
 public class LoginController {
 	
 
@@ -32,6 +37,9 @@ public class LoginController {
     
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private UserCompanyService userCompanyService;
 
 	/**
 	 * プロフィールの情報を返す。プロフィール情報は人によって違うのでリクエストするパラメータも人によって変わってくるので正規表現{userId:.+}
@@ -43,7 +51,8 @@ public class LoginController {
 	public MainViewMUser postLogin(Model model, Locale locale, @ModelAttribute LoginForm form,BindingResult bindingResult) {
 		//IDに合致するMuserをサービスから取得
 		MUser user = userService.getUserOne(form.getUserId());
-		MainViewMUser mvUser = new MainViewMUser(user);
+		List<UserCompany> userCompany = userCompanyService.getUserCompany(form.getUserId());
+		MainViewMUser mvUser = new MainViewMUser(user,userCompany);
 		return mvUser;
 	        
 	}
