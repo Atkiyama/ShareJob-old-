@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,7 +47,7 @@ public class LoginController {
 	 * @param userId ユーザID リクエストに対応するものを自動で撮ってきてくれる
 	 * @return json形式でユーザIDとパスワードが帰ってくる
 	 */
-	@PostMapping("/login")
+	@GetMapping("/login")
 	public MainViewMUser postLogin(Model model, Locale locale, @ModelAttribute LoginForm form,BindingResult bindingResult) {
 		//IDに合致するMuserをサービスから取得
 		MUser user = userService.getUserOne(form.getUserId());
