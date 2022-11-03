@@ -6,18 +6,16 @@
         <div class="border border-secondary rounded p-3 mx-auto" style="width:30em">
             <form class="row g-3 needs-validation" novalidate>
             <div class="bg-danger bg-gradient text-white" v-if="loginFailed">
-                入力内容に誤りがあります。
+                入力内容に誤りがあります。<br/>
                 ユーザIDとパスワードを入力しなおしてください。
             </div>
             <div>
                 <label for="userIdForm" class="form-label">ユーザーID</label>
                 <input class="form-control" v-model="userId" type="text" id="userIdForm" required>
-                <div class="invalid-feedback">正しいユーザーIDを入力してください</div>
             </div>
             <div>
                 <label for="passwordForm" class="form-label">パスワード</label><br/>
                 <input class="form-control" v-model="password" type="password" id="passwordForm" required>
-                <div class="invalid-feedback">正しいパスワードを入力してください</div>
             </div>
             <div class="text-center">
                 <button class="btn btn-success" v-on:click="login">ログイン</button>
@@ -31,7 +29,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 export default{
@@ -45,42 +43,35 @@ export default{
     },
     methods:{
         login(){
-            /*
-            //ToDo:P_URLをbackのログイン管理APIにget request送るためのurlに書き換える
-            let P_URL="https://script.google.com/macros/s/AKfycbwzOKNeN4csEdR0A--YJzNZ0v60m89ZiDzpbDdz-CFQFDjSdvCRBKg5o0zr4Mz1oDXuhw/exec";
-            P_URL=P_URL+"?userId="+this.userId+"&password="+this.password;
+            let sendId=this.userId;
+            let sendPass=this.password;
             const vue = this;//important
             const option={responseType: "blob"};
-            axios.get(P_URL,option).then(response=>{
+            axios.get('/index/login',{
+                params:{
+                    userId:sendId,
+                    password:sendPass
+                }
+            },option).then(response=>{
                 response.data.text().then(str=>{vue.init(str);});
-            }).catch(e=>{
+            }).catch(err=>{
                 alert("ログインエラーが発生しました");
-                console.log(e);
-            });
-            */
-
-            const vue = this;//important
-            axios.post('/index/login',{
-                userId: this.userId,
-                password: this.password
-            }).then(function (response) {
-                alert("thenに遷移");
-                response.data.text().then(str=>{vue.init(str);});
-            }).catch(function (error) {
-                alert("ログインエラーが発生しました");
-                console.log(error);
+                console.log(err);
             });
         },
         init(str){
-            let res=JSON.parse(str).items;
+            let name=JSON.parse(str).userName;
+            let jlist=JSON.parse(str).items;
             //console.log(JSON.parse(str).items);
             this.$store.dispatch("userLogin/saveUserId",this.userId);
-            this.$store.dispatch("userLogin/changeIsLogged");
-            this.$store.dispatch("jobList/saveJList",res)
-            //ここで画面遷移
-            this.$router.push({name:'HomeView'});
-            if(this.$store.dispatch("jobList/checkJListNull")){//認証失敗
+            this.$store.dispatch("jobList/saveUserName",name);
+            this.$store.dispatch("jobList/saveJList",jlist);
+            let check=this.$store.getters["jobList/getUserName"];
+            if(check==""){//認証失敗
                 this.loginFailed=true;
+            }else{
+                this.$store.dispatch("userLogin/changeIsLogged");
+                this.$router.push({name:'HomeView'});
             }
         },
         signup(){

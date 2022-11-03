@@ -27,13 +27,6 @@ const mutations={
     },
     resetJList(state){
         state.jlist=[];
-    },
-    checkJListNull(state){
-        if (state.jlist==[]){
-            return true;
-        }else{
-            return false;
-        }
     }
 };
 
@@ -49,9 +42,6 @@ const actions={
     },
     resetJList({commit}){
         commit("resetJList");
-    },
-    checkJListNull({commit}){
-        commit("checkJListNull");
     }
 };
 

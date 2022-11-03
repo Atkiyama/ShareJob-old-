@@ -10,6 +10,10 @@
 <script>
 import JobList from '../components/JobList.vue';
 
+// Test for nonLoginDemo (import axios library)
+import axios from 'axios';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
 export default {
     name: "HomeView",
     data() {
@@ -24,25 +28,41 @@ export default {
         if (!isLogged) {
             this.$router.push({ name: "LoginForm" })
         }
-        /*
-        const getUserId = this.$store.getters["userLogin/getUserId"];
-        //ToDo:G_URLをbackの仕事情報管理APIにget request送るためのurlに書き換える
-        let G_URL="https://script.google.com/macros/s/AKfycbzCcVLeQuaxhdV1c_9IpxY7lYaR0v35uTReyicBzDvhHMTElM04G4JtzOs45zQ_LGyY/exec";
-        G_URL=G_URL+"?userId="+getUserId;
+
+        // Test for nonLoginDemo
+        let getUserId = this.$store.getters["userLogin/getUserId"];
         const vue = this;//important
         const option={responseType: "blob"};
-        axios.get(G_URL,option).then(response => {
-            response.data.text().then(str => { vue.init(str);});
-        }).catch(e => {
-            alert("エラーが発生しました");
-            console.log(e);
+        axios.get('/index/login',{
+            params:{
+                userId:getUserId,
+                password:'id1'
+            }
+        },option).then(response=>{
+            response.data.text().then(str=>{vue.testInit(str);});
+        }).catch(err=>{
+            alert("ログインエラーが発生しました");
+            console.log(err);
         });
-        */
+
+        /*
+        // get userName & jobList from ../store/jobList/index.js
         const vue = this;
         vue.init();
+        */
     },
     methods: {
+        testInit(str) {// Method for nonLoginDemo Test
+            // register userName & jobList
+            let name=JSON.parse(str).userName;
+            let jlist=JSON.parse(str).items;
+            //console.log(JSON.parse(str).items);
+            this.$store.dispatch("jobList/saveUserName",name);
+            this.$store.dispatch("jobList/saveJList",jlist);
+            this.init();
+        },
         init() {
+            // Load userName & jobList registed
             this.userName=this.$store.getters["jobList/getUserName"];
             this.items=this.$store.getters["jobList/getJList"];
             this.reset();
