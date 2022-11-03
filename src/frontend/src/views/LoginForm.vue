@@ -54,6 +54,7 @@ export default{
                 }
             },option).then(response=>{
                 response.data.text().then(str=>{vue.init(str);});
+                alert("ログイン成功");
             }).catch(err=>{
                 alert("ログインエラーが発生しました");
                 console.log(err);

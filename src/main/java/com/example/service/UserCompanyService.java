@@ -8,6 +8,7 @@ public interface UserCompanyService {
 	 //企業とメモ取得
 	
 
-	public List<UserCompany> getUserCompany(String userId);
+	public List<UserCompany> getUserCompany(String companyId);
+	
 
 }

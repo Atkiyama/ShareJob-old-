@@ -11,6 +11,6 @@ import lombok.Data;
 @Table(name="user_company")
 public class UserCompany {
 	@Id
-	private UserCompanyKey mUserCompanyKey;
+	private UserCompanyKey userCompanyKey;
 	private String companyMemo;
 }
