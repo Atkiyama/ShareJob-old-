@@ -54,7 +54,6 @@ export default{
                 }
             },option).then(response=>{
                 response.data.text().then(str=>{vue.init(str);});
-                alert("ログイン成功");
             }).catch(err=>{
                 alert("ログインエラーが発生しました");
                 console.log(err);
@@ -62,13 +61,13 @@ export default{
         },
         init(str){
             let name=JSON.parse(str).userName;
-            let jlist=JSON.parse(str).items;
-            //console.log(JSON.parse(str).items);
+            let jlist=JSON.parse(str).companyMemo;
+            //console.log(JSON.parse(str));
             this.$store.dispatch("userLogin/saveUserId",this.userId);
             this.$store.dispatch("jobList/saveUserName",name);
             this.$store.dispatch("jobList/saveJList",jlist);
             let check=this.$store.getters["jobList/getUserName"];
-            if(check==""){//認証失敗
+            if(check==""){//認証失敗(ユーザ名の中身が空)
                 this.loginFailed=true;
             }else{
                 this.$store.dispatch("userLogin/changeIsLogged");
@@ -76,7 +75,7 @@ export default{
             }
         },
         signup(){
-            this.$router.push({name:'SignUp'});
+            this.$router.push({name:"SignUp"});
         }
     }
 }

@@ -10,9 +10,11 @@
 <script>
 import JobList from '../components/JobList.vue';
 
+/*
 // Test for nonLoginDemo (import axios library)
 import axios from 'axios';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+*/
 
 export default {
     name: "HomeView",
@@ -26,9 +28,10 @@ export default {
     mounted() {
         const isLogged = this.$store.getters["userLogin/getIsLogged"];
         if (!isLogged) {
-            this.$router.push({ name: "LoginForm" })
+            this.$router.push({name:"LoginForm"})
         }
 
+        /*
         // Test for nonLoginDemo
         let getUserId = this.$store.getters["userLogin/getUserId"];
         const vue = this;//important
@@ -44,14 +47,14 @@ export default {
             alert("ログインエラーが発生しました");
             console.log(err);
         });
+        */
 
-        /*
         // get userName & jobList from ../store/jobList/index.js
         const vue = this;
         vue.init();
-        */
     },
     methods: {
+        /*
         testInit(str) {// Method for nonLoginDemo Test
             // register userName & jobList
             let name=JSON.parse(str).userName;
@@ -61,6 +64,7 @@ export default {
             this.$store.dispatch("jobList/saveJList",jlist);
             this.init();
         },
+        */
         init() {
             // Load userName & jobList registed
             this.userName=this.$store.getters["jobList/getUserName"];

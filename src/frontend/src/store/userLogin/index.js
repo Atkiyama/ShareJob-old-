@@ -1,10 +1,9 @@
 /**
  * management userId and isLogged
- * version for nonLoginDemo
  */
 const state={
-    userId:"id1",
-    isLogged:true
+    userId:"",
+    isLogged:false
 };
 
 const getters={
