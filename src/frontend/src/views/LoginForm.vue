@@ -53,16 +53,24 @@ export default{
                     password:sendPass
                 }
             },option).then(response=>{
-                response.data.text().then(str=>{vue.init(str);});
+                console.log(response.data);
+                //response.data.then(str=>{vue.init(str);});
+                vue.init(response.data);
             }).catch(err=>{
                 alert("ログインエラーが発生しました");
                 console.log(err);
             });
         },
         init(str){
-            let name=JSON.parse(str).userName;
-            let jlist=JSON.parse(str).companyMemo;
-            //console.log(JSON.parse(str));
+            
+            // let jlist=JSON.parse(str).companyMemo;
+            // let name=JSON.parse(str).userName;
+            let name = str.userName;
+            let jlist = str.companyMemo;
+
+            console.log(str);
+            console.log(name);
+            console.log(jlist);
             this.$store.dispatch("userLogin/saveUserId",this.userId);
             this.$store.dispatch("jobList/saveUserName",name);
             this.$store.dispatch("jobList/saveJList",jlist);

@@ -1,8 +1,7 @@
 package com.example.model.view;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.example.model.Company;
 import com.example.model.MUser;
@@ -16,13 +15,13 @@ public class MainViewMUser {
 	/**
 	 * キーに社名、valueにメモ
 	 */
-	private Map<String, String> companyMemo;
+	private ArrayList<MainViewUserCompany> companyMemo;
 	public MainViewMUser(MUser user,List<Company> companys, List<UserCompany> userCompanys) {
 		// TODO 自動生成されたコンストラクター・スタブ
 		userName = user.getUserName();
-		companyMemo = new HashMap<>();
+		companyMemo = new ArrayList<>();
 		for(int i=0;i<companys.size();i++) {
-			 companyMemo.put(companys.get(i).getCompanyName(),userCompanys.get(i).getCompanyMemo());
+			 companyMemo.add(new MainViewUserCompany(companys.get(i).getCompanyName(),userCompanys.get(i).getCompanyMemo()));
 		}
 	}
 
