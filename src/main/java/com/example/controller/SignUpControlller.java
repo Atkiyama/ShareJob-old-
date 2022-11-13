@@ -15,7 +15,7 @@ import com.example.service.UserService;
  * @author akiyamashuuhei
  *
  */
-public class MainControlller {
+public class SignUpControlller {
 
 	/**
 	 * ユーザの情報を取得するサービスのクラス

@@ -54,7 +54,7 @@ public class LoginController {
 	 * @return json形式でユーザIDとパスワードが帰ってくる
 	 */
 	@GetMapping("/login")
-	public MainViewMUser postLogin(Model model, Locale locale, @ModelAttribute LoginForm form,BindingResult bindingResult) {
+	public MainViewMUser getLogin(Model model, Locale locale, @ModelAttribute LoginForm form,BindingResult bindingResult) {
 		//IDに合致するMuserをサービスから取得
 		MUser user = userService.getUserOne(form.getUserId());
 		List<UserCompany> userCompanys = userCompanyService.getUserCompany(form.getUserId());
