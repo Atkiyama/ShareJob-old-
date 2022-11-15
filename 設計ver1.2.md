@@ -35,6 +35,8 @@
     - UserService UserServiceImplのメソッド定義を行う
     - impl 
         - UserServiceImpl ユーザ名、ID,パスワードを元にユーザ登録をUserRepositoryで行う。(JPAではユーザ追加のメソッドは実装済みなので今回はrepositoryの実装はいらない)
+- form
+    - SignUpForm POSTする情報を定義する
 
 #### フロントエンド側
 
