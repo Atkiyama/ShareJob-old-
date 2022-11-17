@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 /**
  * ユーザ情報を定義するクラス
@@ -17,12 +19,19 @@ import lombok.Data;
  */
 @Data
 @Entity
+@Builder
 @Table(name="m_user")
 public class MUser {
+   
+   
+    
     @Id
     private String userId;
     private String password;
     private String userName;
+    
+    @Tolerate
+    public MUser() {}
 //    private String userName;
 //    private Date birthday;
 //    private Integer age;
@@ -44,4 +53,10 @@ public class MUser {
 //    	@JoinColumn(insertable=false,updatable=false,name="company_Id")
 //    })*/
 //    private Map<String,String> companyMemo;
+    public MUser(String userId, String password, String userName) {
+        super();
+        this.userId = userId;
+        this.password = password;
+        this.userName = userName;
+    }
 }

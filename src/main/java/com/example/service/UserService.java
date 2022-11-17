@@ -24,4 +24,7 @@ public interface UserService {
     public void deleteUserOne(String userId, String password, String userName);
 
     public MUser getLoginUser(String userId);
+
+
+    public void signUp(MUser user);
 }

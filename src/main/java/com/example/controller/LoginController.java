@@ -7,7 +7,6 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,15 +21,18 @@ import com.example.service.CompanyService;
 import com.example.service.UserCompanyService;
 import com.example.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * ログイン画面に遷移するためのコントローラー
  * "/sharejob"に飛ぶようにしてください
  * @author akiyamashuuhei
  *
  */
-@CrossOrigin
+
 @RestController
 @RequestMapping("/index")
+@Slf4j
 public class LoginController {
 	
 
@@ -64,7 +66,9 @@ public class LoginController {
 			Company company = companyService.getCompany(companyId);
 			companys.add(company);
 		}
+		
 		MainViewMUser mvUser = new MainViewMUser(user,companys,userCompanys);
+		log.info(mvUser.toString());
 		return mvUser;
 	        
 	}
