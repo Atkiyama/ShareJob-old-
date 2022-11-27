@@ -30,6 +30,11 @@ const routes = [
     path: '/profile',
     name: 'ProfileView',
     component:()=>import('../views/ProfileView.vue')
+  },
+  {
+    path: '/showLoginInfo',
+    name: 'showLoginInfo',
+    component:()=>import('../views/ShowLoginInfo.vue')
   }
 ]
 
