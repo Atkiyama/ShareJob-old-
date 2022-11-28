@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class GlobalControllAdvice {
+public class GlobalControllerAdvice {
 
     /** データベース関連の例外処理 */
     @ExceptionHandler(DataAccessException.class)

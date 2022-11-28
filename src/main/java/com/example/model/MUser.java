@@ -1,12 +1,12 @@
 package com.example.model;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import java.util.Date;
+
+import lombok.Builder;
+import lombok.Data;
+import lombok.experimental.Tolerate;
 
 /**
  * ユーザ情報を定義するクラス
@@ -19,19 +19,44 @@ import java.util.Date;
  */
 @Data
 @Entity
+@Builder
 @Table(name="m_user")
 public class MUser {
+   
+   
+    
     @Id
     private String userId;
     private String password;
+    private String userName;
+    
+    @Tolerate
+    public MUser() {}
 //    private String userName;
 //    private Date birthday;
 //    private Integer age;
 //    private Integer gender;
 //    private Integer departmentId;
-//    private String role;
+//    private Grade grade;
 //    @Transient
-//    private Department department;
-//    @Transient
-//    private List<Salary> salaryList;
+    //他対一
+//    @ManyToOne(optional = true)
+//    //外部キーを設定
+//    @JoinColumn(insertable=false,updatable=false,name="company_Id")
+//	private List<Company> companyList;
+//    
+//    @OneToOne(optional = true)
+//    /*
+//    //外部キー(複数)を設定
+//    @JoinColumns({
+//    	@JoinColumn(insertable=false,updatable=false,name="user_Id"),
+//    	@JoinColumn(insertable=false,updatable=false,name="company_Id")
+//    })*/
+//    private Map<String,String> companyMemo;
+    public MUser(String userId, String password, String userName) {
+        super();
+        this.userId = userId;
+        this.password = password;
+        this.userName = userName;
+    }
 }
