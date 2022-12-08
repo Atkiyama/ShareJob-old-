@@ -20,12 +20,12 @@
 
 ## 　機能について
 
-
+準備中
 ## 環境構築方法
 各バージョンを以下に揃える必要があります。またmavenのインストールが必要になります
-java:11
-node v16.17.0
-npm 8.15.0
+- java:11
+- node v16.17.0
+- npm 8.15.0
 
 ### MAC OSの場合
 
@@ -42,11 +42,8 @@ npm 8.15.0
 
 以下のコマンドでjava11をインストールしてください。
 ``` sh : grepVer3.sh
-
- brew search java11
  brew install java11
 ```
-
 指示があればインストールのメッセージにある通り環境変数を設定してください
 
 ``` sh : grepVer3.sh
@@ -107,21 +104,21 @@ echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> ~/.zprofile
 追記した後、ターミナルを再起動もしくはsourceコマンドで環境パスを読み込んでください
 
 ###### sourceコマンド
-``` sh :sdf.sh
+``` sh : sdf.sh
 source ~/.zshrc
 ```
 
 ##### 5 mavenのインストール
 
 以下コマンドで簡単にインストールできます
-``` sh :sdf.sh
+``` sh : sdf.sh
 brew install maven
 ```
 
 ##### 6 vuecliのインストール
 
 以下コマンドで簡単にインストールできます
-``` sh :sdf.sh
+``` sh : sdf.sh
 npm install -g @vue/cli
 ```
 
@@ -134,22 +131,28 @@ Dockerfileを元にイメージ作ってコンテナを立ち上げてくださ�
 ##### インストール
 git cloneでローカル環境に本アプリケーションをインストールします
 
-``` sh:dfs.sh
+``` sh: dfs.sh
 git clone https://github.com/Atkiyama/ShareJob.git
 ```
 
 ##### ビルド
-git cloneでローカル環境に本アプリケーションをインストールします
+以下コマンドでビルドできます
 
-``` sh:dfs.sh
-git clone https://github.com/Atkiyama/ShareJob.git
+``` sh: dfs.sh
+
+mvn clean package
 ```
 
 ##### 実行とアクセス
-git cloneでローカル環境に本アプリケーションをインストールします
 
-``` sh:dfs.sh
-git clone https://github.com/Atkiyama/ShareJob.git
+以下のコマンドを実行し http://localhost:3000 にアクセスすることで本アプリケーションを実行できます
+``` sh: dfs.sh
+java -jar target/ShareJob-0.0.1-SNAPSHOT.jar
 ```
 
 ### 仮IDについて
+現在、二つの仮IDが用意されています。テストにご使用ください。
+| ユーザ名 | ユーザID | パスワード | 
+| -------- | -------- | ---------- | 
+| ID1      | id1      | id1        | 
+| ID2      | id2      | id2        | 
