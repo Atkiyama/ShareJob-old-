@@ -35,14 +35,14 @@
 
 ``` sh : grepVer3.sh
 
- /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ##### 2 javaのインストール
 
 以下のコマンドでjava11をインストールしてください。
 ``` sh : grepVer3.sh
- brew install java11
+brew install java11
 ```
 指示があればインストールのメッセージにある通り環境変数を設定してください
 
