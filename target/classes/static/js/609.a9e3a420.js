@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkfrontend"]=self["webpackChunkfrontend"]||[]).push([[609],{609:function(n,e,r){r.r(e),r.d(e,{default:function(){return i}});var t=r(252);const c={class:"m-5 p-3"},s=(0,t._)("div",{class:"text-center"},[(0,t.Uk)(" ShareJobのトップページです。"),(0,t._)("br"),(0,t.Uk)(" 主な機能や特徴など、宣伝内容を書く予定です。 ")],-1),u=[s];function a(n,e){return(0,t.wg)(),(0,t.iD)("div",c,u)}var f=r(744);const o={},d=(0,f.Z)(o,[["render",a]]);var i=d}}]);
-//# sourceMappingURL=609.a9e3a420.js.map

@@ -69,10 +69,10 @@ public Authentication attemptAuthentication(HttpServletRequest request, HttpServ
       
         // これでデフォルトのProviderを利用しつつ、ユーザーレコードの取得に関してはUserDetailsServiceの実装クラスのloadUserByUsernameを利用する
         UserDetails user = service.loadUserByUseId(form.getUserId());
-        log.info("user="+user);
+        log.info("ユーザ="+user.toString());
         
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user, form.getPassword());
-        token.setDetails(new UserDetailsServiceImpl());
+        token.setDetails(service);
         log.info("token="+token);
         return this.authenticationManager.authenticate(token);
     } catch (IOException e) {
