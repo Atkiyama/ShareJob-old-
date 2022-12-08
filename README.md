@@ -76,7 +76,8 @@ Warning: r.gz: No such file or directory
 curl: (23) Failed writing body (0 != 941)
 download failed: https://nodejs.org/dist/v7.10.0/node-v7.10.0-darwin-x64.tar.gz
 ```
-######　setupコマンド
+
+setupコマンド
 ``` sh : grepVer3.sh
 nodebrew setup
 ```
