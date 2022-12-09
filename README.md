@@ -90,7 +90,7 @@ nodebrew install-binary v16.17.0
 
 その後このコマンドを打ってパスを通すことでnodeが使用可能になります。
 ``` sh : grepVer3.sh
-nodebrew use v7.1.0
+nodebrew use v16.17.0
 ```
 
 - bashの場合
