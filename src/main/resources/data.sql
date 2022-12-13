@@ -7,6 +7,8 @@ INSERT INTO m_user (
 ) VALUES
 ('id1', 'id1','ID1')
 ,('id2', 'id2','ID2')
+,('id3', '$2a$10$7P0Dpcr7BUaa18CUnR6t/OI5ObkenrSEutO7QW3NEWLqNbEW7ubT.','ID3')
+,('id4', '$2a$10$rHdSWtucvtmi5MMgf8nPNubs/Jker.VU/DIMPvT9SDyzqUA60RDTG','ID4')
 ;
 
 /* 会社マスタ */
@@ -33,4 +35,8 @@ INSERT INTO user_company (
 ,('id2', 'company2','もしもしポリスメン?')
 ,('id1', 'company2','蒼井翔太')
 ,('id2', 'company1','巨大マックス')
+,('id3', 'company1','内定承諾')
+,('id4', 'company2','もしもしポリスメン?')
+,('id3', 'company2','蒼井翔太')
+,('id4', 'company1','巨大マックス')
 ;
