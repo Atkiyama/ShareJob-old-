@@ -24,6 +24,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+/**
+ * 認証フィルタ作成ようのクラス
+ * @author akiyamashuuhei
+ *
+ */
 public class JsonAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 private AuthenticationManager authenticationManager;
