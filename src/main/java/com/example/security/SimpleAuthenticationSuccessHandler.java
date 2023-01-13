@@ -1,4 +1,4 @@
-package com.example.demo.security;
+package com.example.security;
 
 import java.util.Date;
 import java.util.Objects;
@@ -62,7 +62,7 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
    * @return
    */
   private String generateToken(Authentication auth) {
-    SimpleLoginUser loginUser = (SimpleLoginUser) auth.getPrincipal();
+    LoginUser loginUser = (LoginUser) auth.getPrincipal();
     //日付を取得
     Date issuedAt = new Date();
     //トークンが使える開始時刻
@@ -74,7 +74,7 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
         .withIssuedAt(issuedAt)
         .withNotBefore(notBefore)
         .withExpiresAt(expiresAt)
-        .withSubject(loginUser.getUser().getId().toString())
+        .withSubject(loginUser.getUser().getUserId().toString())
         .sign(this.algorithm);
     log.debug("generate token : {}", token);
     return token;

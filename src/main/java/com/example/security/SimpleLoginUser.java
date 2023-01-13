@@ -1,22 +1,23 @@
-package com.example.demo.security;
-
-import com.example.demo.entity.User;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
+package com.example.security;
 
 import java.util.List;
 
-public class SimpleLoginUser extends org.springframework.security.core.userdetails.User {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+
+import com.example.model.MUser;
+
+public class LoginUser extends org.springframework.security.core.userdetails.User {
 
     // Userエンティティ
-    private com.example.demo.entity.User user;
+    private MUser user;
 
-    public User getUser() {
+    public MUser getUser() {
         return user;
     }
 
-    public SimpleLoginUser(User user) {
-        super(user.getName(), user.getPassword(), determineRoles(user.getAdmin()));
+    public LoginUser(MUser user) {
+        super(user.getUserId(), user.getPassword(), determineRoles(user.getAdmin()));
         this.user = user;
     }
 
